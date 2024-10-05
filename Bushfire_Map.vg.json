@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Bushfire Impact by Jurisdiction (2020)",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/L4N4HU55/Week10Homework/refs/heads/main/ne_50m_admin_1_states_provinces.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "australia_ne_50m_admin_1_states_provinces"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/L4N4HU55/Week10Homework/refs/heads/main/Map_A2.csv"
+        },
+        "key": "Jurisdiction",
+        "fields": ["Fire"]
+      }
+    },
+    {"calculate": "toNumber(datum.Fire) + 0.1", "as": "Fire Area"}
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "Fire Area",
+      "type": "quantitative",
+      "scale": {"type": "log"}
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "Fire", "type": "quantitative"}
+    ]
+  },
+  "config": {}
+}

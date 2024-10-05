@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Fire Area and Forest within Fire Area by Jurisdiction",
+  "data": {
+    "url": "https://raw.githubusercontent.com/L4N4HU55/Week10Homework/refs/heads/main/Barchart.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "fold": ["Fire area", "Forest area in fire area"],
+      "as": ["Area Type", "Value"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Jurisdiction",
+          "type": "nominal",
+          "axis": {"labelAngle": 45},
+          "title": "State",
+          "bandSize": 30
+        },
+        "y": {"field": "Value", "type": "quantitative"},
+        "xOffset": {"field": "Area Type"},
+        "color": {
+          "field": "Area Type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Fire area", "Forest area in fire area"],
+            "range": ["#ff9999", "#66b3ff"]
+          }
+        },
+        "tooltip": [
+          {"field": "Jurisdiction", "type": "nominal"},
+          {"field": "Area Type", "type": "nominal"},
+          {"field": "Value", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "y": {"aggregate": "mean", "field": "Value", "type": "quantitative"},
+        "color": {"value": "red"},
+        "size": {"value": 3}
+      }
+    }
+  ],
+  "config": {}
+}
