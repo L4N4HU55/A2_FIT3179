@@ -1,9 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Bushfire Impact by Jurisdiction (2020)",
-  "width": 800,
+  "title": {
+    "text": "Bushfire Impact by Jurisdiction (2020)",
+    "color": "white"
+  },
+
+  "width": 500,
   "height": 400,
-  "projection": {"type": "mercator"},
+  "background": "black",
+  "projection": { "type": "mercator" },
   "data": {
     "url": "https://raw.githubusercontent.com/L4N4HU55/Week10Homework/refs/heads/main/ne_50m_admin_1_states_provinces.topojson",
     "format": {
@@ -22,19 +27,23 @@
         "fields": ["Fire"]
       }
     },
-    {"calculate": "toNumber(datum.Fire) + 0.1", "as": "Fire Area"}
+    { "calculate": "toNumber(datum.Fire) + 0.1", "as": "Fire Area" }
   ],
-  "mark": {"type": "geoshape"},
+  "mark": { "type": "geoshape", "strokeWidth": 0 },
   "encoding": {
     "color": {
       "field": "Fire Area",
       "type": "quantitative",
-      "scale": {"type": "log"}
+      "scale": { "type": "log", "range": ["#f0c958", "#af1a3c"] }
     },
     "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State"},
-      {"field": "Fire", "type": "quantitative"}
+      { "field": "properties.name", "type": "nominal", "title": "State" },
+      { "field": "Fire", "type": "quantitative" }
     ]
   },
-  "config": {}
+  "config": {
+    "text": { "color": "white" },
+    "axis": { "labelColor": "white", "titleColor": "white" },
+    "legend": { "labelColor": "white", "titleColor": "white" }
+  }
 }
