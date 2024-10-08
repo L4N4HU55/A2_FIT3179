@@ -22,7 +22,10 @@
           "title": "State",
           "bandSize": 30
         },
-        "y": {"field": "Value", "type": "quantitative"},
+        "y": {
+          "field": "Value",
+          "type": "quantitative"
+        },
         "xOffset": {"field": "Area Type"},
         "color": {
           "field": "Area Type",
@@ -42,11 +45,14 @@
     {
       "mark": "rule",
       "encoding": {
-        "y": {"aggregate": "mean", "field": "Value", "type": "quantitative"},
+        "y": {
+          "aggregate": "mean",
+          "field": "Value",  
+          "type": "quantitative"
+        },
         "color": {"value": "red"},
         "size": {"value": 3}
       }
     }
-  ],
-  "config": {}
+  ]
 }
