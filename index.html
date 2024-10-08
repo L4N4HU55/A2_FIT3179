@@ -10,12 +10,60 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
     <title>Bushfires in Australia in 2020</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .graph-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-container div {
+            margin-top: 20px;
+        }
+
+        #map, #barchart {
+            width: 90%;
+            max-width: 700px;
+            height: 400px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Bushfires in Australia in 2020</h1>
-    <div id="map"></div>
-    <div id="barchart"></div>
+    <div class="content">
+        <h1>Bushfires in Australia in 2020</h1>
+        <p>The 2019-20 Australian bushfires were catastrophic in scale and impact - both for people and for nature. Up to 19 million hectares were burnt, with 12.6 million hectares primarily forests and woodlands. Nearly 3 billion animals were impacted by the blazes.</p>
+
+        <p>But even before the bushfires started, our native forests and wildlife were suffering due to deforestation and the impacts of climate change on the environment.</p>
+
+        <p>Australia is home to incredible biodiversity that is found nowhere else on the planet. But now, more than 1,700 species of plants, animals, and ecological communities are officially listed as threatened. This includes nearly 500 species of wildlife. The bushfires during the summer of 2019-20 only made the situation worse.</p>
+
+        <p>Australia's nature laws are undergoing a once-in-10-year review. We already lost so much in the fires - will you ask your local politician to protect our wildlife and their remaining homes?</p>
+
+        <div class="graph-container">
+            <h2>Map of Bushfires in Australia</h2>
+            <div id="map"></div>
+
+            <h2>Bushfire Data by Region</h2>
+            <div id="barchart"></div>
+        </div>
+    </div>
 
     <script src="vega_lite_vis.js"></script>
     <script>
@@ -24,8 +72,8 @@
             var view = result.view;
         }).catch(console.error);
 
-        var vg_1 = "Barchart.vg.json";
-        vegaEmbed("#barchart", vg_1).then(function(result) {
+        var vg_2 = "Barchart.vg.json";
+        vegaEmbed("#barchart", vg_2).then(function(result) {
             var view = result.view;
         }).catch(console.error);
     </script>
