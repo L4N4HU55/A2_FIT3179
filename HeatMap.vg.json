@@ -1,12 +1,21 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Heatmap of Burnt Forest Area by Forest Tenure and State",
+  "title": {
+    "text": "Heatmap of Burnt Forest Area by Forest Tenure and State",
+    "color": "white"
+  },
+  "background": "black",
   "width": 500,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/L4N4HU55/Week10Homework/refs/heads/main/Area%20of%20Burnt%20Forest.csv",
-    "format": {"type": "csv"}
+    "format": { "type": "csv" }
   },
+  "transform": [
+    {
+      "filter": { "field": "Burnt Forest Area", "range": [0, 3000] }
+    }
+  ],
   "layer": [
     {
       "mark": "rect",
@@ -15,26 +24,35 @@
           "field": "Forest tenure",
           "type": "nominal",
           "title": "Forest Tenure",
-          "axis": {"labelAngle": 45}
+          "axis": { "labelAngle": 45 }
         },
-        "y": {"field": "State", "type": "nominal", "title": "State"},
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "title": "State"
+        },
         "color": {
           "field": "Burnt Forest Area",
           "type": "quantitative",
           "title": "Burnt Forest Area (hectares)",
-          "scale": {"scheme": "reds"},
+          "scale": { "range": ["#af1a3c", "#f0c958"] },
           "legend": {
             "title": "Burnt Forest Area (hectares)",
             "orient": "right",
             "format": ",.0f"
           }
-        }
+        },
+        "tooltip": [
+          { "field": "Forest tenure", "type": "nominal" },
+          { "field": "State", "type": "nominal" },
+          { "field": "Burnt Forest Area", "type": "quantitative" }
+        ]
       }
     },
     {
-      "mark": {"type": "text", "baseline": "middle", "align": "center"},
+      "mark": { "type": "text", "baseline": "middle", "align": "center" },
       "encoding": {
-        "text": {"field": "Burnt Forest Area", "type": "quantitative"},
+        "text": { "field": "Burnt Forest Area", "type": "quantitative" },
         "color": {
           "condition": {
             "test": "datum['Burnt Forest Area'] < 40",
@@ -42,16 +60,14 @@
           },
           "value": "white"
         },
-        "x": {"field": "Forest tenure", "type": "nominal"},
-        "y": {"field": "State", "type": "nominal"}
+        "x": { "field": "Forest tenure", "type": "nominal" },
+        "y": { "field": "State", "type": "nominal" }
       }
     }
   ],
-  "tooltip": [
-    {"field": "Forest tenure", "type": "nominal"},
-    {"field": "State", "type": "nominal"},
-    {"field": "Burnt Forest Area", "type": "quantitative"}
-  ],
-  "transform": [{"filter": {"field": "Burnt Forest Area", "range": [0, 3000]}}],
-  "config": {}
+  "config": {
+    "text": { "color": "white" },
+    "axis": { "labelColor": "white", "titleColor": "white" },
+    "legend": { "labelColor": "white", "titleColor": "white" }
+  }
 }
