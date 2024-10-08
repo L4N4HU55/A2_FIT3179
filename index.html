@@ -48,44 +48,41 @@
 
         .graph-wrapper {
             display: flex;
-            justify-content: space-between; /* Align the two graphs side by side */
+            justify-content: space-between;
             padding: 16px;
         }
 
-        .graph-bar {
-            flex-basis: 80%; /* Adjust width for the bar chart */
+        .graph-bubble {
+            flex-basis: 80%;
         }
 
         .graph-heat {
-            flex-basis: 20%; /* Adjust width for the heatmap */
+            flex-basis: 20%;
         }
 
-        #barchart {
+        #bubblechart {
             width: 100%;
-            height: 300px;
+            height: 100px;
             background: rgba(0, 0, 0, 0);
             border: 1px solid #000;
         }
 
         #heatmap {
             width: 100%;
-            height: 50px;
+            height: 100px;
             background: rgba(0, 0, 0, 0);
             border: 1px solid #000;
         }
 
-        .additional-content {
-            margin-top: 14px; /* Adds space above the new container */
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1); /* Slightly visible background for contrast */
-            border-radius: 5px; /* Rounded corners */
-            text-align: center; /* Center the image */
+        #barchart {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0);
+            border: 1px solid #000;
         }
 
-        .additional-content img {
-            max-width: 100%; /* Responsive image */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 5px; /* Optional: rounded corners for the image */
+        .barchart-section {
+            flex-basis: 53%;
         }
 
         p {
@@ -95,31 +92,33 @@
 </head>
 
 <body>
+    <header>
+        <img src="1549c75e3bac5ab66573fe4335552ed5.jpg" alt="Header Image" style="width: 100%; height: auto;">
+    </header>
     <div class="content">
         <h1 class="font-effect-fire">Bushfires in Australia in 2020</h1>
 
         <div class="content-wrapper">
-            <!-- Text Section -->
             <div class="text-section">
                 <p>The 2019-20 Australian bushfires were catastrophic in scale and impact - both for people and for nature. Up to 19 million hectares were burnt, with 12.6 million hectares primarily forests and woodlands.</p>
                 
-                <!-- New Container for Additional Content -->
-                <div class="additional-content">
-                    <img src="1549c75e3bac5ab66573fe4335552ed5.jpg" alt="A forest fire">
-                    <p>This is a placeholder.</p>
+                <div class="barchart-section">
+                    <div id="barchart"></div>
                 </div>
             </div>
 
-            <!-- Map Section -->
             <div class="map-section">
                 <div id="map"></div>
             </div>
         </div>
 
-        <!-- Graphs Section -->
         <div class="graph-wrapper">
-            <div id="barchart"></div> <!-- Bar chart takes 60% -->
-            <div id="heatmap"></div> <!-- Heatmap takes 35% -->
+            <div class="graph-bubble">
+                <div id="bubblechart"></div>
+            </div>
+            <div class="graph-heat">
+                <div id="heatmap"></div>
+            </div>
         </div>
 
     </div>
@@ -131,13 +130,18 @@
             var view = result.view;
         }).catch(console.error);
 
-        var vg_2 = "Barchart.vg.json";
-        vegaEmbed("#barchart", vg_2).then(function(result) {
+        var vg_2 = "BubbleChart.vg.json";
+        vegaEmbed("#bubblechart", vg_2).then(function(result) {
             var view = result.view;
         }).catch(console.error);
 
-        var vg_3 = "HeatMap.vg.json";
-        vegaEmbed("#heatmap", vg_3).then(function(result) {
+        var vg_3 = "Barchart.vg.json";
+        vegaEmbed("#barchart", vg_3).then(function(result) {
+            var view = result.view;
+        }).catch(console.error);
+
+        var vg_4 = "HeatMap.vg.json";
+        vegaEmbed("#heatmap", vg_4).then(function(result) {
             var view = result.view;
         }).catch(console.error);
     </script>
