@@ -2,13 +2,24 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Non-Forest Area and Forest within Fire Area by Jurisdiction",
-    "color": "white"
+    "color": "white",
+    "font": "Yatra One" 
   },
   "background": "black",
   "config": {
-    "text": { "color": "white" },
-    "axis": { "labelColor": "white", "titleColor": "white" },
-    "legend": { "labelColor": "white", "titleColor": "white" }
+    "text": { "color": "white", "font": "Yatra One" }, 
+    "axis": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "labelFont": "Yatra One",
+      "titleFont": "Yatra One" 
+    },
+    "legend": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "labelFont": "Yatra One", 
+      "titleFont": "Yatra One"
+    }
   },
   "data": {
     "url": "https://raw.githubusercontent.com/L4N4HU55/Week10Homework/refs/heads/main/Barchart.csv",
@@ -31,7 +42,7 @@
         "x": {
           "field": "Jurisdiction",
           "type": "nominal",
-          "axis": { "labelAngle": 45 },
+          "axis": { "labelAngle": 45, "labelFont": "Yatra One" },
           "title": "State"
         },
         "y": {
