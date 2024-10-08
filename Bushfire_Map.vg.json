@@ -2,7 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Bushfire Impact by Jurisdiction (2020)",
-    "color": "white"
+    "color": "white",
+    "font": "Yatra One" 
   },
 
   "width": 500,
@@ -42,8 +43,18 @@
     ]
   },
   "config": {
-    "text": { "color": "white" },
-    "axis": { "labelColor": "white", "titleColor": "white" },
-    "legend": { "labelColor": "white", "titleColor": "white" }
+    "text": { "color": "white", "font": "Yatra One" }, 
+    "axis": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "labelFont": "Yatra One", 
+      "titleFont": "Yatra One"
+    },
+    "legend": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "labelFont": "Yatra One", 
+      "titleFont": "Yatra One" 
+    }
   }
 }
