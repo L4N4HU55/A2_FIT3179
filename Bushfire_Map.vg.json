@@ -1,11 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Bushfire Impact by Jurisdiction (2020)",
+    "text": "Bushfire Impact by State",
     "color": "white",
-    "font": "Yatra One" 
+    "font": "Yatra One"
   },
-
   "width": 500,
   "height": 400,
   "background": "black",
@@ -28,33 +27,44 @@
         "fields": ["Fire"]
       }
     },
-    { "calculate": "toNumber(datum.Fire) + 0.1", "as": "Fire Area" }
+    {
+      "calculate": "toNumber(datum.Fire) + 0.1",
+      "as": "Fire Area"
+    },
+    {
+      "calculate": "datum.Fire < 100 ? '0 – 100' : datum.Fire < 500 ? '101 – 500' : datum.Fire < 1500 ? '501 – 1,500' : datum.Fire < 3000 ? '1,501 – 3,000' : '3,001+'",
+      "as": "Fire Range"
+    }
   ],
   "mark": { "type": "geoshape", "strokeWidth": 0 },
   "encoding": {
     "color": {
-      "field": "Fire Area",
-      "type": "quantitative",
-      "scale": { "type": "log", "range": ["#f0c958", "#af1a3c"] }
+      "field": "Fire Range",
+      "type": "ordinal",
+      "scale": {
+        "domain": ["0 – 100", "101 – 500", "501 – 1,500", "1,501 – 3,000", "3,001+"],
+        "range": ["#de8740", "#d86f39", "#d05832", "#c8412b", "#af1a3c"]
+      },
+      "legend": {"title": "Fire Area", "symbolType": "square"}
     },
     "tooltip": [
       { "field": "properties.name", "type": "nominal", "title": "State" },
-      { "field": "Fire", "type": "quantitative" }
+      { "field": "Fire Area", "type": "quantitative", "title": "Fire Area ('000 hectares)" }
     ]
   },
   "config": {
-    "text": { "color": "white", "font": "Yatra One" }, 
+    "text": { "color": "white", "font": "Yatra One" },
     "axis": {
       "labelColor": "white",
       "titleColor": "white",
-      "labelFont": "Yatra One", 
+      "labelFont": "Yatra One",
       "titleFont": "Yatra One"
     },
     "legend": {
       "labelColor": "white",
       "titleColor": "white",
-      "labelFont": "Yatra One", 
-      "titleFont": "Yatra One" 
+      "labelFont": "Yatra One",
+      "titleFont": "Yatra One"
     }
   }
 }
