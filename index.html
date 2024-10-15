@@ -17,7 +17,7 @@
             max-width: 1200px;
             margin: 0 auto;
             color: #fff;
-            background-color: #000;
+            background-color: #141414;
             overflow-x: hidden;
         }
 
@@ -28,66 +28,74 @@
         .content-wrapper {
             display: flex;
             justify-content: space-between;
-            padding: 16px;
+            margin-left: 37px;
+            margin-right: 37px; 
+            margin-top: 20px; 
         }
 
         .text-section {
-            flex-basis: 45%;
+            flex-basis: 30%; 
             margin-right: 2%;
         }
 
         .map-section {
-            flex-basis: 53%;
+            flex-basis: 68%; 
         }
 
         #map {
             width: 100%;
             height: 25px;
             background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #000;
+            border: 1px solid #141414;
         }
 
         .graph-wrapper {
             display: flex;
-            justify-content: space-between;
-            padding: 16px;
+            justify-content: space-between; 
+            margin-left: 37px; 
+            margin-right: 37px; 
+            margin-top: 20px; 
+        }
+
+        .bubble-container {
+            display: flex; 
+            align-items: flex-start; 
+            justify-content: flex-end; 
         }
 
         .graph-bubble {
-            flex-basis: 80%;
+            flex-basis: 50%; 
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        .text-box-small {
+            flex-basis: 40%;
         }
 
         .graph-heat {
-            flex-basis: 20%;
+            flex-basis: 20%; 
         }
 
         #bubblechart {
             width: 100%;
             height: 100px;
             background: rgba(0, 0, 0, 0);
-            border: 1px solid #000;
+            border: 1px solid #141414;
         }
 
         #heatmap {
             width: 100%;
             height: 100px;
             background: rgba(0, 0, 0, 0);
-            border: 1px solid #000;
+            border: 1px solid #141414;
         }
 
         #barchart {
             width: 100%;
             height: 200px;
             background: rgba(0, 0, 0, 0);
-            border: 1px solid #000;
-        }
-
-        .barchart-section {
-            flex-basis: 53%;
-        }
-
-        p {
-            margin: 10px 0;
+            border: 1px solid #141414;
         }
     </style>
 </head>
@@ -103,22 +111,36 @@
             <div class="text-section">
                 <p>The 2019-20 Australian bushfires were catastrophic in scale and impact - both for people and for nature. Up to 19 million hectares were burnt, with 12.6 million hectares primarily forests and woodlands.</p>
                 
+                <p>Here we can see that majority of the area that was impacted were forests and the state most affected was NSW</p>
                 <div class="barchart-section">
                     <div id="barchart"></div>
                 </div>
             </div>
+
+        <audio autoplay loop>
+            <source src="Fireplace.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
 
             <div class="map-section">
                 <div id="map"></div>
             </div>
         </div>
 
-        <div class="graph-wrapper">
-            <div class="graph-bubble">
-                <div id="bubblechart"></div>
-            </div>
-            <div class="graph-heat">
-                <div id="heatmap"></div>
+        <div class="info-wrapper">
+            <div class="graph-wrapper">
+                <div class="graph-heat">
+                    <div id="heatmap"></div>
+                    <p>From this heatmap, we can tell that devastatingly a majority of the area burnt in NSW were part of the nature conservation.</p>
+                </div>
+                <div class="graph-bubble">
+                    <div class="bubble-container">
+                        <div class="text-box-small">
+                            <p>T31 is the heat emitted from the fire.</p>
+                        </div>
+                        <div id="bubblechart"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
